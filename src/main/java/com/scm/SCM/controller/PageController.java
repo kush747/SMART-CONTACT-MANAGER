@@ -87,16 +87,6 @@ if(rBindingResult.hasErrors()){
     return "signup";
 }
 
-
-//save to database
-// User user = User.builder().
-// name(userForm.getName())
-// .email(userForm.getEmail())
-// .password(userForm.getPassword())
-// .phoneNumber(userForm.getPhoneNumber())
-// .about(userForm.getAbout())
-// .build();
-
 User user = new User();
 user.setName(userForm.getName());
 user.setEmail(userForm.getEmail());

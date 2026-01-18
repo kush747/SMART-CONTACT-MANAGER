@@ -16,12 +16,13 @@
 
         <!-- SIGNUP CARD -->
         <div class="bg-neutral-primary-soft w-full p-6 border border-default rounded-base shadow-xs 
-                    hover:bg-neutral-secondary-medium hover:bg-slate-400 transition">
+                    hover:bg-neutral-secondary-medium hover:bg-slate-400 transition bg-gray-900">
+                  
 
           <div data-th-replace="message :: messagebox"></div>
 
-          <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Login Here</h5>
-          <p class="text-body text-gray-500">Start managing contacts on cloud....</p>
+          <h5 class="mb-3 text-2xl text-white font-semibold tracking-tight text-heading leading-8">Login Here</h5>
+          <p class="text-body text-gray-200">Start managing contacts on cloud....</p>
           <div class="text-red-800 mt-5 mb-3 px-3 border flex justify-center border-red-700 rounded-md border-spacing-2 " th:if="${param.error}">Invalid username and password</div>
           <div class="text-green-700 mt-5 mb-3 px-3 border flex justify-center border-green-700 rounded-md border-spacing-2 " th:if="${param.logout}">You have been logged out</div>
 
@@ -34,7 +35,7 @@
 
             <!-- EMAIL -->
             <div class="mb-3">
-              <label for="email" class="block mb-2 text-sm font-medium text-gray-700">Email</label>
+              <label for="email" class="block mb-2 text-sm font-medium text-gray-200">Email</label>
               <input 
                   name="email"
                   type="email"
@@ -49,7 +50,7 @@
 
             <!-- PASSWORD -->
             <div class="mb-3">
-              <label for="password" class="block mb-2 text-sm font-medium text-gray-700">Password</label>
+              <label for="password" class="block mb-2 text-sm font-medium text-gray-200">Password</label>
               <input 
                   name="password"
                   type="password"
@@ -64,10 +65,10 @@
 
             <!-- BUTTONS -->
             <div class="mb-2.5 flex justify-center gap-5">
-              <button type="submit" class="px-3 py-2 rounded bg-blue-600 hover:bg-blue-800 text-white">Login</button>
-              <button type="reset" class="px-3 py-2 rounded bg-orange-500 hover:bg-orange-800 text-white">Reset</button>
+              <button type="submit" class="px-3 py-2 rounded bg-blue-600 hover:bg-blue-800 text-white font-bold">Login</button>
+              <button type="reset" class="px-3 py-2 rounded bg-red-700 hover:bg-red-800 text-white font-bold">Reset</button>
             </div>
-             <div class="text-center text-gray-500 mb-2">OR</div>
+             <div class="text-center text-gray-200 mb-2">OR</div>
 
     <!-- GOOGLE LOGIN -->
     <a href="/oauth2/authorization/google"
