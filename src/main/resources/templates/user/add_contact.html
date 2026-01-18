@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"
+      th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head>
+    <title>Add Contact</title>
+</head>
+
+<body>
+
+<div id="content">
+
+    <!-- Sidebar -->
+    <div th:if="${loggedinuser}">
+        <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ml-64 min-h-screen flex justify-center pt-10 px-4 bg-gray-950">
+
+        <div class="w-full max-w-7xl">
+
+            <!-- Card -->
+            <div class="bg-gray-900 border border-gray-800 rounded-xl shadow-lg p-8">
+
+                <!-- Header -->
+                <div class="mb-6">
+                    <h1 class="text-2xl font-semibold text-white">Add Contact</h1>
+                    <p class="text-sm text-gray-400 mt-1">
+                        Store and manage your contacts securely
+                    </p>
+                </div>
+
+                <!-- Form -->
+                <form method="post" class="space-y-5"
+                data-th-action="@{'/user/contacts/add'}"
+                data-th-object="${contactForm}"
+                >
+
+                    <!-- Name -->
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-1">
+                            Contact Name
+                        </label>
+                        <input type="text"
+                               data-th-field="*{name}"
+                               placeholder="John Doe"
+                               class="w-full px-4 py-2 bg-gray-800 border border-gray-700
+                                      rounded-lg text-white focus:ring-2 focus:ring-gray-500"/>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-1">
+                            Contact Email
+                        </label>
+                        <input type="email"
+                                 data-th-field="*{email}"
+                               placeholder="john@example.com"
+                               class="w-full px-4 py-2 bg-gray-800 border border-gray-700
+                                      rounded-lg text-white focus:ring-2 focus:ring-gray-500"/>
+                    </div>
+
+                    <!-- Phone -->
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-1">
+                            Phone Number
+                        </label>
+                        <input type="text"
+                               data-th-field="*{phoneNumber}"
+                               placeholder="+91 XXXXX XXXXX"
+                               class="w-full px-4 py-2 bg-gray-800 border border-gray-700
+                                      rounded-lg text-white focus:ring-2 focus:ring-gray-500"/>
+                    </div>
+
+                    <!-- Address -->
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-1">
+                            Address
+                        </label>
+                        <textarea rows="3"
+                                  data-th-field="*{address}"
+                                  placeholder="Enter address"
+                                  class="w-full px-4 py-2 bg-gray-800 border border-gray-700
+                                         rounded-lg text-white"></textarea>
+                    </div>
+
+                    <!-- Description -->
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-1">
+                            Description
+                        </label>
+                        <textarea rows="3"
+                                    data-th-field="*{description}"
+                                  placeholder="About this contact"
+                                  class="w-full px-4 py-2 bg-gray-800 border border-gray-700
+                                         rounded-lg text-white"></textarea>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-300 mb-1">
+                                Website
+                            </label>
+                            <input type="text"
+                                    data-th-field="*{websiteLink}"
+                                   placeholder="https://facebook.com/..."
+                                   class="w-full px-4 py-2 bg-gray-800 border border-gray-700
+                                          rounded-lg text-white"/>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-gray-300 mb-1">
+                                LinkedIn
+                            </label>
+                            <input type="text"
+                                   data-th-field="*{linkedInLink}"
+                                   placeholder="https://linkedin.com/in/..."
+                                   class="w-full px-4 py-2 bg-gray-800 border border-gray-700
+                                          rounded-lg text-white"/>
+                        </div>
+                    </div>
+
+                    <!-- File Upload -->
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-1">
+                            Contact Picture
+                        </label>
+                        <input type="file"
+                               class="block w-full text-sm text-gray-400
+                                      file:bg-gray-800 file:border file:border-gray-700
+                                      file:px-4 file:py-2 file:rounded-lg
+                                      file:text-gray-200 hover:file:bg-gray-700"/>
+                    </div>
+
+                    <!-- Favourite -->
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox"
+                                 data-th-field="*{favourite}"   
+                               class="w-4 h-4 bg-gray-800 border-gray-600 rounded">
+                        <span class="text-sm text-gray-300">
+                            Mark as favourite
+                        </span>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="flex justify-center gap-4 pt-4">
+                        <button type="submit"
+                                class="px-6 py-2 bg-gray-700 text-white rounded-lg
+                                       hover:bg-gray-600 transition">
+                            Add Contact
+                        </button>
+
+                        <button type="reset"
+                                class="px-6 py-2 bg-gray-800 text-gray-300 rounded-lg
+                                       hover:bg-gray-700 transition">
+                            Reset
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    console.log("Add Contact page loaded");
+</script>
+
+</body>
+</html>
