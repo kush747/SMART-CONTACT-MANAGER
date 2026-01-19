@@ -14,12 +14,12 @@
 
         <!-- SIGNUP CARD -->
         <div class="bg-neutral-primary-soft w-full p-6 border border-default rounded-base shadow-xs 
-                    hover:bg-neutral-secondary-medium  transition bg-gray-900">
+                    hover:bg-neutral-secondary-medium  transition bg-white">
 
           <div data-th-replace="message :: messagebox"></div>
 
-          <h5 class="mb-3 text-2xl text-white font-semibold tracking-tight text-heading leading-8">Signup Here</h5>
-          <p class="text-body text-gray-200">Start managing contacts on cloud....</p>
+          <h5 class="mb-3 text-2xl text-black font-semibold tracking-tight text-heading leading-8">Signup Here</h5>
+          <p class="text-body text-gray-700">Start managing contacts on cloud....</p>
 
           <form  
             data-th-action="@{'/do-register'}"
@@ -31,7 +31,7 @@
 
             <!-- NAME -->
             <div class="mb-3">
-              <label for="name" class="block mb-2 text-sm font-medium text-gray-200">Name</label>
+              <label for="name" class="block mb-2 text-sm font-medium text-black">Name</label>
               <input 
                   type="text"
                   id="name"
@@ -46,7 +46,7 @@
 
             <!-- EMAIL -->
             <div class="mb-3">
-              <label for="email" class="block mb-2 text-sm font-medium text-gray-200">Email</label>
+              <label for="email" class="block mb-2 text-sm font-medium text-black">Email</label>
               <input 
                   th:field="*{email}"
                   type="email"
@@ -61,7 +61,7 @@
 
             <!-- PASSWORD -->
             <div class="mb-3">
-              <label for="password" class="block mb-2 text-sm font-medium text-gray-200">Password</label>
+              <label for="password" class="block mb-2 text-sm font-medium text-black">Password</label>
               <input 
                   th:field="*{password}"
                   type="password"
@@ -76,7 +76,7 @@
 
             <!-- PHONE -->
             <div class="mb-3">
-              <label for="phone" class="block mb-2 text-sm font-medium text-gray-200">Phone Number</label>
+              <label for="phone" class="block mb-2 text-sm font-medium text-black">Phone Number</label>
               <input 
                   th:field="*{phoneNumber}"
                   type="text"
@@ -91,7 +91,7 @@
 
             <!-- ABOUT -->
             <div class="mb-3">
-              <label for="about" class="block mb-2 text-sm font-medium text-gray-200">About Yourself</label>
+              <label for="about" class="block mb-2 text-sm font-medium text-black">About Yourself</label>
               <textarea 
                   th:field="*{about}"
                   id="about"

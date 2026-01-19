@@ -40,9 +40,9 @@ public class Contact {
 
     private String websiteLink;
     private String linkedInLink;
-    // private String twitterLink;
-    // private String facebookLink;
-    // private String instagramLink;
+   
+    private String cloudinaryImagePublicid;
+
 
     
    // private List<SocialLinks> socialLinks = new ArrayList<>();

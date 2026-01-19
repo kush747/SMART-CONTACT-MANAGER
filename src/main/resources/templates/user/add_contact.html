@@ -20,13 +20,13 @@
         <div class="w-full max-w-7xl">
 
             <!-- Card -->
-            <div class="bg-gray-900 border border-gray-800 rounded-xl shadow-lg p-8">
-                <div class="bg-gray-900" data-th-replace="message :: messagebox"></div>
+            <div class="bg-white border border-gray-800 rounded-xl shadow-lg p-8">
+                <div class="bg-green-500 text-green-900" data-th-replace="message :: messagebox"></div>
 
                 <!-- Header -->
                 <div class="mb-6">
-                    <h1 class="text-2xl font-semibold text-white">Add Contact</h1>
-                    <p class="text-sm text-gray-400 mt-1">
+                    <h1 class="text-2xl font-semibold text-black">Add Contact</h1>
+                    <p class="text-sm text-black mt-1">
                         Store and manage your contacts securely
                     </p>
                 </div>
@@ -35,11 +35,12 @@
                 <form method="post" class="space-y-5"
                 data-th-action="@{'/user/contacts/add'}"
                 data-th-object="${contactForm}"
+                        enctype="multipart/form-data"
                 >
 
                     <!-- Name -->
                     <div>
-                        <label class="block text-sm text-gray-300 mb-1">
+                        <label class="block text-sm text-black mb-1">
                             Contact Name
                         </label>
                         <input type="text"
@@ -52,7 +53,7 @@
 
                     <!-- Email -->
                     <div>
-                        <label class="block text-sm text-gray-300 mb-1">
+                        <label class="block text-sm text-black mb-1">
                             Contact Email
                         </label>
                         <input type="email"
@@ -65,7 +66,7 @@
 
                     <!-- Phone -->
                     <div>
-                        <label class="block text-sm text-gray-300 mb-1">
+                        <label class="block text-sm text-black mb-1">
                             Phone Number
                         </label>
                         <input type="text"
@@ -78,7 +79,7 @@
 
                     <!-- Address -->
                     <div>
-                        <label class="block text-sm text-gray-300 mb-1">
+                        <label class="block text-sm text-black mb-1">
                             Address
                         </label>
                         <textarea rows="3"
@@ -91,7 +92,7 @@
 
                     <!-- Description -->
                     <div>
-                        <label class="block text-sm text-gray-300 mb-1">
+                        <label class="block text-sm text-black mb-1">
                             Description
                         </label>
                         <textarea rows="3"
@@ -105,7 +106,7 @@
                     <!-- Social Links -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm text-gray-300 mb-1">
+                            <label class="block text-sm text-black mb-1">
                                 Website
                             </label>
                             <input type="text"
@@ -116,7 +117,7 @@
                         </div>
 
                         <div>
-                            <label class="block text-sm text-gray-300 mb-1">
+                            <label class="block text-sm text-black mb-1">
                                 LinkedIn
                             </label>
                             <input type="text"
@@ -129,14 +130,17 @@
 
                     <!-- File Upload -->
                     <div>
-                        <label class="block text-sm text-gray-300 mb-1">
+                        <label class="block text-sm text-black mb-1">
                             Contact Picture
                         </label>
                         <input type="file"
-                               class="block w-full text-sm text-gray-400
+                        id="image_file_input"
+                        data-th-field="*{contactImage}"
+                               class="block w-full text-sm text-black
                                       file:bg-gray-800 file:border file:border-gray-700
                                       file:px-4 file:py-2 file:rounded-lg
                                       file:text-white hover:file:bg-gray-700"/>
+                                      <img class="max-h-44 mx-auto rounded-lg shadow" src="" id="upload_image_preview"  alt="">
                     </div>
 
                     <!-- Favourite -->
@@ -144,7 +148,7 @@
                         <input type="checkbox"
                                  data-th-field="*{favourite}"   
                                class="w-4 h-4 bg-gray-800 border-gray-600 rounded">
-                        <span class="text-sm text-gray-300">
+                        <span class="text-sm text-black">
                             Mark as favourite
                         </span>
                     </div>
@@ -170,6 +174,9 @@
         </div>
     </div>
 </div>
+<script data-th-src="@{'/js/admin.js'}">
+
+</script>
 
 <script>
     console.log("Add Contact page loaded");

@@ -16,13 +16,13 @@
 
         <!-- SIGNUP CARD -->
         <div class="bg-neutral-primary-soft w-full p-6 border border-default rounded-base shadow-xs 
-                    hover:bg-neutral-secondary-medium hover:bg-slate-400 transition bg-gray-900">
+                    hover:bg-neutral-secondary-medium hover:bg-slate-400 transition bg-white">
                   
 
           <div data-th-replace="message :: messagebox"></div>
 
-          <h5 class="mb-3 text-2xl text-white font-semibold tracking-tight text-heading leading-8">Login Here</h5>
-          <p class="text-body text-gray-200">Start managing contacts on cloud....</p>
+          <h5 class="mb-3 text-2xl text-black font-semibold tracking-tight text-heading leading-8">Login Here</h5>
+          <p class="text-body text-gray-700">Start managing contacts on cloud....</p>
           <div class="text-red-800 mt-5 mb-3 px-3 border flex justify-center border-red-700 rounded-md border-spacing-2 " th:if="${param.error}">Invalid username and password</div>
           <div class="text-green-700 mt-5 mb-3 px-3 border flex justify-center border-green-700 rounded-md border-spacing-2 " th:if="${param.logout}">You have been logged out</div>
 
@@ -35,7 +35,7 @@
 
             <!-- EMAIL -->
             <div class="mb-3">
-              <label for="email" class="block mb-2 text-sm font-medium text-gray-200">Email</label>
+              <label for="email" class="block mb-2 text-sm font-medium text-black">Email</label>
               <input 
                   name="email"
                   type="email"
@@ -50,7 +50,7 @@
 
             <!-- PASSWORD -->
             <div class="mb-3">
-              <label for="password" class="block mb-2 text-sm font-medium text-gray-200">Password</label>
+              <label for="password" class="block mb-2 text-sm font-medium text-black">Password</label>
               <input 
                   name="password"
                   type="password"

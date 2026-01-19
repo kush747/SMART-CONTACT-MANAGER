@@ -35,15 +35,14 @@ public class ContactForm {
     @NotBlank(message = "Description cannot be empty")
     @Size(min = 10 , max = 100, message = "write more about the contact")
     private String description;
-   
     @Builder.Default
     private boolean favourite=false;
-
-    
     private String websiteLink;
     private String linkedInLink;
 
-    private MultipartFile profileImage;
+
+    
+    private MultipartFile contactImage;
 
 
 

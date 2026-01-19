@@ -5,10 +5,69 @@
 </head>
 <body>
    <div id="content">
-    <h1>welcome to contact page</h1>
-    <p>
-        THIS IS THE contact PAGE
-    </p>
+    <div class="max-w-6xl mx-auto px-6 py-12">
+
+    <!-- Card -->
+   <div class="bg-white rounded-2xl shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-2">
+
+    <!-- Left Image Section -->
+    <div class="bg-white p-8 flex items-start justify-center">
+        <img src="/images/contact.jpg"
+             alt="Contact Us"
+             class="w-4/5 max-h-96 object-contain">
+    </div>
+
+        <!-- Right Form Section -->
+        <div class="p-8">
+
+            <form class="space-y-6">
+              <div class="text-center mt-6 mb-10">
+                <h1 class="text-8xl font-bold text-orange-600 mb-3">Contact Us</h1>
+              </div>
+
+                <!-- Name -->
+                <div>
+                  
+                    <label class="block text-gray-700 font-medium mb-1">
+                        Your Name
+                    </label>
+                    <input type="text"
+                           placeholder="Enter your name"
+                           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-1">
+                        Your Email
+                    </label>
+                    <input type="email"
+                           placeholder="Enter your email"
+                           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <!-- Message -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-1">
+                        Your Message
+                    </label>
+                    <textarea rows="5"
+                              placeholder="Write your message..."
+                              class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit"
+                        class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+     
    </div>
    <script>
     console.log("Contact page")
