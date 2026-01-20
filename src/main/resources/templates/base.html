@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 
-<html lang="en" th:fragment="parent(content,title,script)" xmlns="http://www.thymeleaf.org">
+<html 
+lang="en"
+ th:fragment="parent(content,title,script)" xmlns="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-th-replace="${title}">Base page</title>
     <link href="@{/css/output.css}" rel="stylesheet">
      <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="bg-white">
+<body class="bg-pink-100">
 
         <!-- navbar if user logged in -->
          <div th:if="${loggedinuser}">
@@ -38,8 +41,11 @@
 
     </footer>
 
+
     
      <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+     <script data-th-src="@{'/js/theme.js'}"></script>
+    
      <th:block data-th-replace="${script}"></th:block>
 </body>
 </html>

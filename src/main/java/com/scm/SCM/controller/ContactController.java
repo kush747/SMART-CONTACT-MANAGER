@@ -1,5 +1,6 @@
 package com.scm.SCM.controller;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -93,6 +94,18 @@ public class ContactController {
 
 
         return "redirect:/user/contacts/add";
+    }
+
+    // controller for view contacts page
+    @RequestMapping("/view")
+    public String viewContacts(Authentication authentication,Model model){
+        
+        String username = Helper.getEmailOfLoggedInUser(authentication);
+        User user = userService.getUserByEmail(username);
+        //load all contacts of logged in user
+        List<Contact> contacts = contactService.getContactsByUser(user);
+        model.addAttribute("contacts", contacts);
+        return "user/view_contacts";
     }
 
 }

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head>
+  <title>View Contacts Page</title>
+</head>
+<body>
+  <div id="content">
+
+    <!-- Sidebar if logged in -->
+    <div th:if="${loggedinuser}">
+      <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+    </div>
+
+    <!-- Main container -->
+    <div class="min-h-screen flex flex-col items-center px-4 py-8 space-y-8">
+
+      
+      <div class="bg-white p-6 rounded-xl shadow-lg w-full max-w-md text-center ">
+        <h1 class="text-3xl font-bold mb-2">Welcome to View Contacts Page</h1>
+        <p class="text-gray-700">This is the view contacts page. Manage your contacts easily and efficiently.</p>
+      </div>
+
+     
+      <div class="w-full max-w-7xl flex flex-col items-center space-y-4">
+
+        <!-- Search -->
+        <div class="w-full flex justify-center">
+          <div class="relative w-full max-w-2xl">
+            <input
+              type="text"
+              id="input-group-1"
+              placeholder="Search"
+              class="block w-full ps-10 pe-3 py-2 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+            />
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+              <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table -->
+      
+<div class="w-full overflow-x-auto">
+   
+  <div class="flex w-full justify-start"> 
+    <!---add here to shift table towars right-->
+    <table class="ml-auto min-w-[700px] w-full max-w-6xl bg-white rounded-xl shadow-lg text-left">
+    
+
+      <thead class="bg-gray-100 border-b">
+        <tr>
+          <th class="px-6 py-3 font-medium text-gray-700">Name</th>
+          <th class="px-6 py-3 font-medium text-gray-700">PhoneNumber</th>
+          <th class="px-6 py-3 font-medium text-gray-700">Links</th>
+          <th class="px-6 py-3 font-medium text-gray-700">Action</th>
+          <th class="px-6 py-3 font-medium text-gray-700">Favourite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+        data-th-object="${c}"
+        data-th-each="c : ${contacts}"
+        class="border-b hover:bg-gray-100">
+          <td class="px-6 py-4 flex items-center">
+            <img 
+            onerror="this.src='https://openclipart.org/image/800px/346569'"
+            class="w-10 h-10 rounded-full" data-th-src="@{*{picture}}" alt="/images/contact.jpg">
+            <div class="ps-3">
+              <div data-th-text="*{name}" class="font-semibold text-gray-900 ">for name</div>
+              <div class="text-gray-500 text-sm" data-th-text="*{email}">for email</div>
+            </div>
+          </td>
+          <!---phone number-->
+          <td class="px-6 py-4">
+            <i class="fa-solid fa-phone h-4 w-4"></i>
+            <span data-th-text="*{phoneNumber}"></span>
+            </td>
+
+
+            <!---links-->
+          <td class="px-6 py-4 flex items-center">
+            <span class="h-2.5 w-2.5 rounded-full bg-green-500 me-2" ></span>
+            <a data-th-href="@{*{websiteLink}}" target="_blank"><i class="fa-solid fa-link h-7 w-7"></i></a>
+            <a data-th-href="@{*{linkedInLink}}" target="_blank"><i class="fa-brands fa-linkedin h-7 w-7 pl-3"></i></a>
+
+          </td>
+
+         <!----->
+          <td class="px-6 py-4">
+           <div>
+            <i class="fa-solid fa-trash h-6 w-6 "></i>
+            <i class="fa-solid fa-pen h-6 w-6 pl-3"></i>
+            <i class="fa-solid fa-eye h-6 w-6 pl-5"></i>
+           </div>
+
+          <!---favourites-->
+          <td class="px-6 py-4">
+            <div data-th-if="*{favourite}" class="">
+              <i class="fa-solid fa-star h-7 w-7 pl-4" style="color: #FFD43B; "></i>
+            </div>
+           
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+      </div>
+
+    </div>
+  </div>
+
+<script>
+  console.log("view contacts page");
+</script>
+</body>
+</html>

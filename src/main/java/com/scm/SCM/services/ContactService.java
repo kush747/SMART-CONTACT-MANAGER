@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.scm.SCM.entities.Contact;
+import com.scm.SCM.entities.User;
 import com.scm.SCM.helper.ResourceNotFoundException;
 import com.scm.SCM.repositories.ContactRepo;
 
@@ -38,8 +39,12 @@ public class ContactService {
         contactRepo.delete(contact);
     }
 
-    public List<Contact> getContactsByUserId(String userId){
+    public List<Contact> getByUserId(String userId){
         return contactRepo.findByUserId(userId);
+    }
+
+    public List<Contact> getContactsByUser(User user){
+        return contactRepo.findByUser(user);
     }
 
     // update and search contact methods can be added here

@@ -140,7 +140,9 @@
                                       file:bg-gray-800 file:border file:border-gray-700
                                       file:px-4 file:py-2 file:rounded-lg
                                       file:text-white hover:file:bg-gray-700"/>
-                                      <img class="max-h-44 mx-auto rounded-lg shadow" src="" id="upload_image_preview"  alt="">
+                                      <img class="h-24 mx-auto rounded-lg shadow" src="" id="upload_image_preview"  alt="">
+            <p data-th-if="${#fields.hasErrors('contactImage')}" th:errors="*{contactImage}" class="text-red-600"></p>
+
                     </div>
 
                     <!-- Favourite -->
