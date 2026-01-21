@@ -11,10 +11,10 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "dependencies": {
-    "@tailwindcss/cli": "^4.1.17"
-  },
   "devDependencies": {
     "tailwindcss": "^3.4.13"
+  },
+  "dependencies": {
+    "flowbite": "^4.0.1"
   }
 }

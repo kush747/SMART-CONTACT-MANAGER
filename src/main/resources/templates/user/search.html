@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<html lang="en"
+th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
 <head>
-  <title>View Contacts Page</title>
+  <title>Search Page</title>
 </head>
 <body>
   <div id="content">
+     <!--if logged in user then sidebar-->
+         <div th:if="${loggedinuser}">
+            <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+         </div>
 
-    <!-- Sidebar if logged in -->
-    <div th:if="${loggedinuser}">
-      <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+<div 
+     class="min-h-screen flex items-center justify-center overflow-y-auto">
+
+    <div class="bg-white p-6 rounded-xl shadow w-full max-w-md text-center">
+        <h1 class="text-2xl font-bold mb-2">Welcome to search Page</h1>
+        <p>THIS IS THE search PAGE</p>
     </div>
+    
 
-    <!-- Main container -->
-    <div class="min-h-screen flex flex-col items-center px-4 py-8 space-y-8">
 
-      
-      <div class="bg-white p-6 rounded-xl shadow-lg w-full max-w-md text-center ">
-        <h1 class="text-3xl font-bold mb-2">Welcome to View Contacts Page</h1>
-        <p class="text-gray-700">This is the view contacts page. Manage your contacts easily and efficiently.</p>
-      </div>
+</div>
+<div class="ml-64 min-h-screen flex justify-center mt-5 ">
+    <div class=" w-full max-w-7xl">
 
-     
-      <div class="w-full max-w-7xl flex flex-col items-center space-y-4">
+        <div class="w-full max-w-7xl flex flex-col items-center space-y-4">
 
        
        <!----search box full functionality-->
@@ -198,11 +202,18 @@
 
       </div>
 
-    </div>
-  </div>
+</div>
+
+</div>
+
+
+class="ml-64 min-h-screen
+
+</div>
 
 <script>
-  console.log("view contacts page");
+  console.log("search page") 
 </script>
+
 </body>
 </html>

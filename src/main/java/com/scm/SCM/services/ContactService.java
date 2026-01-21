@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.scm.SCM.entities.Contact;
@@ -43,8 +47,33 @@ public class ContactService {
         return contactRepo.findByUserId(userId);
     }
 
-    public List<Contact> getContactsByUser(User user){
-        return contactRepo.findByUser(user);
+    public Page<Contact> getContactsByUser(User user,int page, int size,String sortBy, String direction){
+
+        Sort sort = direction.equals("desc")? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+        var pageable = PageRequest.of(page, size,sort);
+
+        
+        return contactRepo.findByUser(user, pageable);
+    }
+
+    public Page<Contact> searchByName(String nameKeyword,int size,int page,String sortBy,String direction){
+        Sort sort = direction.equals("desc")? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+        var pageable = PageRequest.of(page, size, sort);
+
+     return contactRepo.findByNameContaining(nameKeyword, pageable);
+
+    }
+    public Page<Contact> searchByEmail(String emailKeyword,int size,int page,String sortBy,String direction){
+         Sort sort = direction.equals("desc")? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+        var pageable = PageRequest.of(page, size, sort);
+        return contactRepo.findByEmailContaining(emailKeyword, pageable);
+
+    }
+    public Page<Contact> searchByNumber(String phoneNumberKeyword,int size,int page,String sortBy,String direction){
+         Sort sort = direction.equals("desc")? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+        var pageable = PageRequest.of(page, size, sort);
+        return contactRepo.findByPhoneNumberContaining(phoneNumberKeyword, pageable);
+
     }
 
     // update and search contact methods can be added here
