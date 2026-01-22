@@ -77,4 +77,22 @@ public class ContactService {
     }
 
     // update and search contact methods can be added here
+
+    public Contact update(Contact contact){
+
+     var oldContact= contactRepo.findById(contact.getId()).orElseThrow(() -> new ResourceNotFoundException("contact not found"));
+     oldContact.setName(contact.getName());
+     oldContact.setEmail(contact.getEmail());
+     oldContact.setPhoneNumber(contact.getPhoneNumber());
+     oldContact.setAddress(contact.getAddress());
+     oldContact.setDescription(contact.getDescription());
+     oldContact.setLinkedInLink(contact.getLinkedInLink());
+     oldContact.setWebsiteLink(contact.getWebsiteLink());
+     oldContact.setFavourite(contact.isFavourite());
+     oldContact.setPicture(contact.getPicture());
+     oldContact.setCloudinaryImagePublicid(contact.getCloudinaryImagePublicid());
+   
+        return contactRepo.save(oldContact);
+
+    }
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +31,7 @@ import com.scm.SCM.services.imageService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import lombok.var;
 
 @Controller
 @RequestMapping("/user/contacts")
@@ -144,5 +146,84 @@ public class ContactController {
         model.addAttribute("pageContact", pageContact);
         logger.info("pageContact {}",pageContact);
         return "user/search";
+    }
+
+
+    @RequestMapping("/delete/{contactid}")
+    public String deleteContact(@PathVariable String contactid,HttpSession session){
+        contactService.deleteContact(contactid);
+
+        session.setAttribute("message" ,
+        Message.builder()
+        .content("Contact deleted successfully")
+        .type(MessageType.blue)
+        .build());
+      return "redirect:/user/contacts/view";
+    }
+    
+
+    @RequestMapping("/update/{contactid}")
+    public String updateContact(@PathVariable String contactid,Model model){
+       var contact= contactService.getById(contactid);
+       ContactForm contactForm = new ContactForm();
+       contactForm.setName(contact.getName());
+        contactForm.setEmail(contact.getEmail());
+        contactForm.setPhoneNumber(contact.getPhoneNumber());
+        contactForm.setDescription(contact.getDescription());
+        contactForm.setAddress(contact.getAddress());
+        contactForm.setFavourite(contact.isFavourite());
+        contactForm.setWebsiteLink(contact.getWebsiteLink());
+        contactForm.setLinkedInLink(contact.getLinkedInLink());
+        contactForm.setPicture(contact.getPicture());
+        model.addAttribute("contactForm", contactForm);
+        model.addAttribute("contactid", contactid);
+
+        
+
+       
+        return "user/update_contact";
+    }
+
+
+    @RequestMapping(value="/update2/{contactid}",method=RequestMethod.POST)
+    public String update2Contact(@PathVariable String contactid,@Valid @ModelAttribute ContactForm contactForm,BindingResult rBindingResult,Model model){
+
+        if(rBindingResult.hasErrors()){
+            model.addAttribute("contactId", contactid);
+            return "/user/update_contact";
+        }
+        //update the contact
+       var contact = new Contact();
+       contact.setName(contactForm.getName());
+       contact.setEmail(contactForm.getEmail());
+       contact.setAddress(contactForm.getAddress());
+       contact.setDescription(contactForm.getDescription());
+       contact.setWebsiteLink(contactForm.getWebsiteLink());
+       contact.setLinkedInLink(contactForm.getLinkedInLink());
+       contact.setFavourite(contactForm.isFavourite());
+       contact.setPicture(contactForm.getPicture());
+       contact.setPhoneNumber(contactForm.getPhoneNumber());
+       contact.setId(contactid);
+
+    //    String filename = UUID.randomUUID().toString();
+    //    String imageURL = imageService.uploadImage(contactForm.getContactImage(), filename);
+    //    contact.setCloudinaryImagePublicid(filename);
+    //    contact.setPicture(imageURL);
+    if (contactForm.getContactImage() != null 
+        && !contactForm.getContactImage().isEmpty()) {
+
+    String filename = UUID.randomUUID().toString();
+    String imageURL = imageService.uploadImage(contactForm.getContactImage(), filename);
+    contact.setCloudinaryImagePublicid(filename);
+    contact.setPicture(imageURL);
+}
+
+      
+
+        var updatedContact = contactService.update(contact);
+        model.addAttribute("message",Message.builder().content("Contact updated successfully").type(MessageType.blue).build());
+
+        return "redirect:/user/contacts/update/" + contactid ;
+        
     }
 }

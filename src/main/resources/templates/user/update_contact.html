@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en"
+      th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head>
+    <title>Update Contact</title>
+</head>
+
+<body>
+
+<div id="content">
+
+    <!-- Sidebar -->
+    <div th:if="${loggedinuser}">
+        <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ml-64 min-h-screen flex justify-center pt-10 px-4 bg-gray-950">
+
+        <div class="w-full max-w-7xl">
+
+            <!-- Card -->
+            <div class="bg-white border border-gray-800 rounded-xl shadow-lg p-8">
+                 <div data-th-replace="~{message :: messagebox}"></div>
+
+                <!-- Header -->
+                <div class="mb-6">
+                    <h1 class="text-2xl font-semibold text-black">Update Contact</h1>
+                    <p class="text-sm text-black mt-1">
+                        Store and manage your contacts securely
+                    </p>
+                </div>
+
+                <!-- Form -->
+                <form method="post" class="space-y-5"
+                data-th-action="@{'/user/contacts/update2/'+${contactid}}"
+                data-th-object="${contactForm}"
+                        enctype="multipart/form-data"
+                >
+
+                    <!-- Name -->
+                    <div>
+                        <label class="block text-sm text-black mb-1">
+                            Contact Name
+                        </label>
+                        <input type="text"
+                               data-th-field="*{name}"
+                               placeholder="John Doe"
+                               class="w-full px-4 py-2 bg-white border border-gray-700
+                                      rounded-lg text-black focus:ring-2 focus:ring-gray-500"/>
+                         <p data-th-if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-red-600"></p>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block text-sm text-black mb-1">
+                            Contact Email
+                        </label>
+                        <input type="email"
+                                 data-th-field="*{email}"
+                               placeholder="john@example.com"
+                               class="w-full px-4 py-2 bg-white border border-gray-700
+                                      rounded-lg text-black focus:ring-2 focus:ring-gray-500"/>
+                                       <p data-th-if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-red-600"></p>
+                    </div>
+
+                    <!-- Phone -->
+                    <div>
+                        <label class="block text-sm text-black mb-1">
+                            Phone Number
+                        </label>
+                        <input type="text"
+                               data-th-field="*{phoneNumber}"
+                               placeholder="+91 XXXXX XXXXX"
+                               class="w-full px-4 py-2 bg-white border border-gray-700
+                                      rounded-lg text-black focus:ring-2 focus:ring-gray-500"/>
+                                      <p data-th-if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="text-red-600"></p>
+                    </div>
+
+                    <!-- Address -->
+                    <div>
+                        <label class="block text-sm text-black mb-1">
+                            Address
+                        </label>
+                        <textarea rows="3"
+                                  data-th-field="*{address}"
+                                  placeholder="Enter address"
+                                  class="w-full px-4 py-2 bg-white border border-gray-700
+                                         rounded-lg text-black"></textarea>
+                                          <p data-th-if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="text-red-600"></p>
+                    </div>
+
+                    <!-- Description -->
+                    <div>
+                        <label class="block text-sm text-black mb-1">
+                            Description
+                        </label>
+                        <textarea rows="3"
+                                    data-th-field="*{description}"
+                                  placeholder="About this contact"
+                                  class="w-full px-4 py-2 bg-white border border-gray-700
+                                         rounded-lg text-black"></textarea>
+                                          <p data-th-if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-red-600"></p>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-black mb-1">
+                                Website
+                            </label>
+                            <input type="text"
+                                    data-th-field="*{websiteLink}"
+                                   placeholder="https://facebook.com/..."
+                                   class="w-full px-4 py-2 bg-white border border-gray-700
+                                          rounded-lg text-black"/>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-black mb-1">
+                                LinkedIn
+                            </label>
+                            <input type="text"
+                                   data-th-field="*{linkedInLink}"
+                                   placeholder="https://linkedin.com/in/..."
+                                   class="w-full px-4 py-2 bg-white border border-gray-700
+                                          rounded-lg text-black"/>
+                        </div>
+                    </div>
+
+                    <!-- File Upload -->
+                    <div>
+                        <label class="block text-sm text-black mb-1">
+                            Contact Picture
+                        </label>
+                        <input type="file"
+                        id="image_file_input"
+                        data-th-field="*{contactImage}"
+                               class="block w-full text-sm text-black
+                                      file:bg-gray-800 file:border file:border-gray-700
+                                      file:px-4 file:py-2 file:rounded-lg
+                                      file:text-white hover:file:bg-gray-700"/>
+                                      <img class="h-24 mx-auto rounded-lg shadow" src="" id="upload_image_preview"  alt="">
+            <p data-th-if="${#fields.hasErrors('contactImage')}" th:errors="*{contactImage}" class="text-red-600"></p>
+
+                    </div>
+
+                    <!-- Favourite -->
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox"
+                                 data-th-field="*{favourite}"   
+                               class="w-4 h-4 bg-gray-800 border-gray-600 rounded">
+                        <span class="text-sm text-black">
+                            Mark as favourite
+                        </span>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="flex justify-center gap-4 pt-4">
+                        <button type="submit"
+                                class="px-6 py-2 bg-blue-700 text-white rounded-lg
+                                       hover:bg-blue-900 transition">
+                            Add Contact
+                        </button>
+
+                        <button type="reset"
+                                class="px-6 py-2 bg-red-800 text-gray-300 rounded-lg
+                                       hover:bg-red-900 transition">
+                            Reset
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-src="@{'/js/admin.js'}">
+
+</script>
+
+<script>
+    console.log("Add Contact page loaded");
+</script>
+
+</body>
+</html>

@@ -19,6 +19,8 @@
         <h1 class="text-3xl font-bold mb-2">Welcome to View Contacts Page</h1>
         <p class="text-gray-700">This is the view contacts page. Manage your contacts easily and efficiently.</p>
       </div>
+      <div data-th-replace="~{message :: messagebox}"></div>
+     
 
      
       <div class="w-full max-w-7xl flex flex-col items-center space-y-4">
@@ -123,13 +125,18 @@
 
           </td>
 
-         <!----->
+         <!--delete update and view functionalioty--->
           <td class="px-6 py-4">
            <div>
-            <a href=""
-            > <i class="fa-solid fa-trash h-6 w-6 "></i></a>
-            <a href=""><i class="fa-solid fa-pen h-6 w-6 pl-3"></i></a>
-            <a href=""><i class="fa-solid fa-eye h-6 w-6 pl-5"></i></a>
+            <!-- <a data-th-href="@{'/user/contacts/delete/'+*{id}}"
+            > <i class="fa-solid fa-trash h-6 w-6 "></i></a> -->
+            <button th:onclick="deleteContact([[${c.id}]])"
+            > <i class="fa-solid fa-trash h-6 w-6 "></i></button>
+
+            <a data-th-href="@{'/user/contacts/update/'+*{id}}"><i class="fa-solid fa-pen h-6 w-6 pl-3"></i></a>
+
+
+            <button th:onclick="viewContact([[${c.id}]])"><i class="fa-solid fa-eye h-6 w-6 pl-5"></i></button>
            </div>
 
           <!---favourites-->
@@ -200,6 +207,9 @@
 
     </div>
   </div>
+  <script data-th-src="@{'/js/contact.js'}">
+
+</script>
 
 <script>
   console.log("view contacts page");
