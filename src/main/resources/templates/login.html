@@ -15,7 +15,7 @@
         </div>
 
         <!-- SIGNUP CARD -->
-        <div class=" bg-white
+        <div class=" bg-gray-900
                     
         bg-neutral-primary-soft w-full p-6 border border-default rounded-base shadow-xs 
                     hover:bg-neutral-secondary-medium hover:bg-slate-400 transition">
@@ -23,8 +23,8 @@
 
           <div data-th-replace="message :: messagebox"></div>
 
-          <h5 class="mb-3 text-2xl text-black font-semibold tracking-tight text-heading leading-8">Login Here</h5>
-          <p class="text-body text-gray-700">Start managing contacts on cloud....</p>
+          <h5 class="mb-3 text-3xl text-white font-bold  tracking-tight text-heading leading-8">Login Here</h5>
+          <p class="text-body text-gray-300">Start managing contacts on cloud....</p>
           <div class="text-red-800 mt-5 mb-3 px-3 border flex justify-center border-red-700 rounded-md border-spacing-2 " th:if="${param.error}">Invalid username and password</div>
           <div class="text-green-700 mt-5 mb-3 px-3 border flex justify-center border-green-700 rounded-md border-spacing-2 " th:if="${param.logout}">You have been logged out</div>
 
@@ -37,14 +37,14 @@
 
             <!-- EMAIL -->
             <div class="mb-3">
-              <label for="email" class="block mb-2 text-sm font-medium text-black">Email</label>
+              <label for="email" class="block mb-2 text-sm font-medium text-white">Email</label>
               <input 
                   name="email"
                   type="email"
                   id="email"
                   placeholder="Enter your email here"
                   required
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm 
+                  class="w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm bg-gray-800
                           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
               <!-- <p data-th-if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-red-600"></p> -->
@@ -52,14 +52,14 @@
 
             <!-- PASSWORD -->
             <div class="mb-3">
-              <label for="password" class="block mb-2 text-sm font-medium text-black">Password</label>
+              <label for="password" class="block mb-2 text-sm font-medium text-white">Password</label>
               <input 
                   name="password"
                   type="password"
                   id="password"
                   placeholder="Enter your password"
                   required
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm 
+                  class="w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm bg-gray-800
                           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
               <!-- <p data-th-if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-red-600"></p> -->
@@ -93,7 +93,7 @@
 <!-- GITHUB LOGIN -->
 <a href="/oauth2/authorization/github"
    class="flex items-center justify-center gap-3 w-full px-4 py-2 mt-3
-          bg-gray-900 hover:bg-gray-800 text-white
+          bg-gray-800 hover:bg-gray-700 text-white
           rounded-lg transition shadow-sm">
 
     <!-- GitHub Mark: white cat on dark circle -->

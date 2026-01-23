@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"
+      th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head>
+    <title>Email Page</title>
+</head>
+
+<body>
+<div id="content">
+
+    <!-- Sidebar if logged in -->
+    <div th:if="${loggedinuser}">
+        <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+    </div>
+
+    <!-- MAIN WRAPPER -->
+    <div class="min-h-screen flex items-center justify-center px-4  mt-10">
+
+        <!-- EMAIL CARD -->
+        <div
+            class="w-full max-w-7xl bg-gray-900 text-white  bg-gradient-to-br from-slate-900 to-slate-800
+          border-white/10
+         shadow-2xl shadow-black/60  rounded-xl">
+
+            <!-- HEADER -->
+            <div class="text-center mb-8 mt-3">
+                <h1 class="text-3xl font-bold mb-2">Send an Email</h1>
+                <p class="text-gray-400">
+                    Send messages directly from your Smart Contact Manager
+                </p>
+            </div>
+
+            <!-- FORM -->
+            <form data-th-action="@{'/user/contacts/send_email'}" 
+            method="post" class="space-y-5">
+
+                <div class="p-5">
+                    <label class="block text-sm mb-1 text-gray-300">
+                        Recipient Email
+                    </label>
+                    <input type="email" name="to" required
+                           class="w-full p-4 rounded-lg bg-gray-800 text-white
+                                  focus:outline-none focus:ring-2 focus:ring-blue-600"
+                           placeholder="example@gmail.com"/>
+                </div>
+
+                <div class="p-5">
+                    <label class="block text-sm mb-1 text-gray-300">
+                        Subject
+                    </label>
+                    <input type="text" name="subject" required
+                           class="w-full p-4 rounded-lg bg-gray-800 text-white
+                                  focus:outline-none focus:ring-2 focus:ring-blue-600"
+                           placeholder="Email subject"/>
+                </div>
+
+                <div class="p-5">
+                    <label class="block text-sm mb-1 text-gray-300">
+                        Message
+                    </label>
+                    <textarea name="message" rows="6" required
+                              class="w-full p-4 rounded-lg bg-gray-800 text-white
+                                     focus:outline-none focus:ring-2 focus:ring-blue-600"
+                              placeholder="Write your message here..."></textarea>
+                </div>
+                <div class="flex justify-center p-5">
+                     <button type="submit"
+                        class=" py-3 px-5 text-lg rounded-lg text-center
+                               bg-blue-600 hover:bg-blue-700 transition">
+                    Send Email
+                </button>
+
+                </div>
+               
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    console.log("email page");
+</script>
+</body>
+</html>
