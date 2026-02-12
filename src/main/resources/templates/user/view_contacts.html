@@ -136,7 +136,7 @@
             <a data-th-href="@{'/user/contacts/update/'+*{id}}"><i class="fa-solid fa-pen h-6 w-6 pl-3"></i></a>
 
 
-            <button th:onclick="viewContact([[${c.id}]])"><i class="fa-solid fa-eye h-6 w-6 pl-5"></i></button>
+            <button th:onclick="loadContactData()"><i class="fa-solid fa-eye h-6 w-6 pl-5"></i></button>
            </div>
 
           <!---favourites-->
@@ -204,9 +204,16 @@
 
 
       </div>
+      <div data-th-replace="~{user/contact_model  ::  contact_model}"></div>
+
+    </div>
+    
 
     </div>
   </div>
+  <script data-th-src="@{'/js/contact_model.js'}">
+
+  </script>
   <script data-th-src="@{'/js/contact.js'}">
 
 </script>

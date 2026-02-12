@@ -1,6 +1,4 @@
 package com.scm.SCM.controller;
-
-import java.util.List;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.scm.SCM.entities.Contact;
 import com.scm.SCM.entities.User;
@@ -31,7 +28,7 @@ import com.scm.SCM.services.imageService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import lombok.var;
+
 
 @Controller
 @RequestMapping("/user/contacts")
